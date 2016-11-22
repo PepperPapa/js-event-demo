@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>模拟鼠标事件</title>
+</head>
+<body>
+  <button id="myDiv">点击我</button>  
+  
+  <script>
+    var btn = document.getElementById("myDiv");
+    
+    // 指定事件处理函数
+    btn.onclick = function(event) {
+      alert(event.target.innerText);
+    };
+    
+    // 创建事件对象
+    var event = document.createEvent("MouseEvents");
+    
+    // 初始化事件对象
+    event.initMouseEvent("click", true, true, document.defaultView,
+                        0, 0, 0, 0, 0, false, false, false, false, 0, null);
+    
+    // 触发事件
+    btn.dispatchEvent(event);    
+  </script>
+</body>
+</html>
